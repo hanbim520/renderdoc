@@ -71,9 +71,9 @@ if(BUILD_ANDROID)
         CACHE STRING
         "The Android toolchain file")
 
-    # Set default API level to 21 if not configured explicitly
+    # Set default API level to 35 if not configured explicitly
     if(NOT ANDROID_PLATFORM)
-        set(ANDROID_PLATFORM "android-21")
+        set(ANDROID_PLATFORM "android-35")
     endif()
 
     # default to libc++_static as the other options can cause crashes

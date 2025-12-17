@@ -70,9 +70,9 @@ if(BUILD_ANDROID)
 
     option(STRIP_ANDROID_LIBRARY "Strip the resulting android library" OFF)
 
-    # Set default API level to 21 if not configured explicitly
+    # Set default API level to 35 if not configured explicitly
     if(NOT ANDROID_PLATFORM)
-        set(ANDROID_PLATFORM "android-21")
+        set(ANDROID_PLATFORM "android-35")
     endif()
     
     # default to libc++_static as the other options can cause crashes
@@ -452,7 +452,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
     if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 17 AND APPLE)
         # See related https://github.com/swig/swig/issues/1259
-        list(APPEND warning_flags -Wno-cast-function-type-mismatch)
+        list(APPEND warning_flags -Wno-cast-function-type)
     endif()
 
     if(NOT RELEASE_MODE)

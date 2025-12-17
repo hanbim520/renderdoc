@@ -392,7 +392,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR APPLE)
     # Need to add -Wno-unknown-warning-option since some clang versions don't have
     # -Wno-shift-negative-value available
     set_source_files_properties(3rdparty/jpeg-compressor/jpgd.cpp
-        PROPERTIES COMPILE_FLAGS "-Wno-unknown-warning-option -Wno-shift-negative-value -Wno-invalid-noreturn")
+        PROPERTIES COMPILE_FLAGS "-Wno-cast-function-type -Wno-shift-negative-value -Wno-invalid-noreturn")
 
     if(CMAKE_COMPILER_IS_GNUCXX)
         set_property(SOURCE 3rdparty/jpeg-compressor/jpgd.cpp
@@ -422,11 +422,11 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR APPLE)
 
         # Only clang has this warning. Fixing it in this file causes a compile error on windows
         set_source_files_properties(os/os_specific.cpp
-            PROPERTIES COMPILE_FLAGS "-Wno-unknown-warning-option -Wno-unused-lambda-capture")
+            PROPERTIES COMPILE_FLAGS "-Wno-cast-function-type -Wno-unused-lambda-capture")
         
         # We are deliberately testing self-assign here
         set_source_files_properties(replay/basic_types_tests.cpp
-            PROPERTIES COMPILE_FLAGS "-Wno-unknown-warning-option -Wno-self-assign-overloaded")
+            PROPERTIES COMPILE_FLAGS "-Wno-cast-function-type -Wno-self-assign-overloaded")
 
         # stb_image requires these flags to enable ARM SIMD (NEON) for arm32
         if (CMAKE_SYSTEM_PROCESSOR MATCHES "arm" AND NOT CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64" AND NOT CMAKE_SYSTEM_PROCESSOR MATCHES "arm64")

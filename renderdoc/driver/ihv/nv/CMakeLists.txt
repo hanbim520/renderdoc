@@ -22,7 +22,7 @@ endif()
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 18.9)
         set_property(SOURCE ${sources} ${sources_gl} ${sources_vulkan}
-            APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-cast-function-type-mismatch")
+            APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-cast-function-type-strict")
     endif()
 endif()
 

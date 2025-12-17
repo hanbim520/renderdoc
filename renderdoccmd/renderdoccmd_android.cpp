@@ -523,7 +523,13 @@ void android_main(struct android_app *state)
       }
     }
 
-    if(ALooper_pollAll(1, nullptr, &events, (void **)&source) >= 0)
+//     if(ALooper_pollAll(1, nullptr, &events, (void **)&source) >= 0)
+//     {
+//       if(source != NULL)
+//         source->process(android_state, source);
+//     }
+    int result = ALooper_pollOnce(1, nullptr, &events, (void **)&source);
+    if(result >= 0)
     {
       if(source != NULL)
         source->process(android_state, source);
